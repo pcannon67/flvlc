@@ -3,10 +3,6 @@ flvlc
 
 [![flvlc.png](https://i.postimg.cc/CMvzndcF/flvlc.png)](https://postimg.cc/jC7sGqV9)
 
-<img src="https://github.com/daltomi/flvlc/blob/master/screenshots/1.jpg"/>
-
-<img src="https://github.com/daltomi/flvlc/blob/master/screenshots/2.jpg"/>
-
 Download:
 ---------
 From [SourceForge](http://sourceforge.net/projects/flvlc)
