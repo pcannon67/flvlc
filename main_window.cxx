@@ -201,8 +201,8 @@ MainWindow::MainWindow() : Fl_Double_Window(0, 0, 445, 415, "flvlc")
 void MainWindow::conf_button(Fl_Button *btn, STATE state, const char *tip,
 			     Fl_Pixmap &active, Fl_Pixmap &inactive)
 {
-	btn->box(FL_FLAT_BOX);
-	btn->down_box(FL_FLAT_BOX);
+	btn->box(FL_NO_BOX);
+	btn->down_box(FL_NO_BOX);
 	btn->selection_color((Fl_Color)34);
 	btn->clear_visible_focus();
 	btn->color((Fl_Color)FL_GRAY0);
