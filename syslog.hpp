@@ -19,26 +19,25 @@
 
 #pragma once
 
-#ifdef DEBUG 
-#include <syslog.h>
+#ifdef DEBUG
 #include <string>
-template<typename... Arguments>
-static inline void SysLog(const char* const message, Arguments... argv)
+#include <syslog.h>
+template <typename... Arguments>
+static inline void SysLog(const char *const message, Arguments... argv)
 {
 	std::string fmt("#Func:%s #Line:%d #Message:");
-    fmt += message;
-    syslog(LOG_ERR, fmt.c_str(), argv...);  
+	fmt += message;
+	syslog(LOG_ERR, fmt.c_str(), argv...);
 }
-#else // DEBUG
-template<typename... Arguments> __attribute__((unused))
-static inline void SysLog(const char* const message, Arguments... argv) 
-{ }
+#else  // DEBUG
+template <typename... Arguments>
+__attribute__((unused)) static inline void SysLog(const char *const message,
+						  Arguments... argv) {}
 #endif // DEBUG
 
-#undef Log 
-#undef Begin 
+#undef Log
+#undef Begin
 #undef End
 #define Log (SysLog(
-#define Begin ,__func__, __LINE__,
+#define Begin , __func__, __LINE__,
 #define End ));
-
