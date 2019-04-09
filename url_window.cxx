@@ -88,7 +88,7 @@ void URL_Window::check_input_empty(void *data)
 	URL_Window *win = (URL_Window *)data;
 
 	if (nullptr == win->input->value() or
-	    strlen(win->input->value()) <= 0) {
+	    strlen(win->input->value()) == 0) {
 		win->btn_ok->deactivate();
 	} else {
 		win->btn_ok->activate();
