@@ -1,14 +1,15 @@
 flvlc
 =====
 
-[url=https://postimg.cc/p93dFmbf][img]https://i.postimg.cc/p93dFmbf/flvlc-03.png[/img][/url]
 
-[url=https://postimg.cc/BLDncJ4d][img]https://i.postimg.cc/BLDncJ4d/flvlc-00.png[/img][/url]
 
-[url=https://postimg.cc/cKvHCQj1][img]https://i.postimg.cc/cKvHCQj1/flvlc-01.png[/img][/url]
+<a href="https://postimg.cc/p93dFmbf" target="_blank"><img src="https://i.postimg.cc/p93dFmbf/flvlc-03.png" alt="flvlc-03"/></a><br/><br/>
 
-[url=https://postimg.cc/Yvn0tXdy][img]https://i.postimg.cc/Yvn0tXdy/flvlc-02.png[/img][/url]
+<a href="https://postimg.cc/BLDncJ4d" target="_blank"><img src="https://i.postimg.cc/BLDncJ4d/flvlc-00.png" alt="flvlc-00"/></a><br/><br/>
 
+<a href="https://postimg.cc/cKvHCQj1" target="_blank"><img src="https://i.postimg.cc/cKvHCQj1/flvlc-01.png" alt="flvlc-01"/></a><br/><br/>
+
+<a href="https://postimg.cc/Yvn0tXdy" target="_blank"><img src="https://i.postimg.cc/Yvn0tXdy/flvlc-02.png" alt="flvlc-02"/></a><br/><br/>
 
 
 Download:
