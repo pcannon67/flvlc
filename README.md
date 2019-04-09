@@ -8,7 +8,7 @@ flvlc
 Download:
 ---------
 From [SourceForge](http://sourceforge.net/projects/flvlc)
-or from [Git](https://github.com/daltomi/flvlc)
+or from [Git](https://github.com/spycapitan/flvlc)
 
 
 Compile
