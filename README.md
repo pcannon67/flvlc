@@ -51,6 +51,21 @@ Compile
 	cmake -DCMAKE_BUILD_TYPE=Debug .. && make
 	```
 
+
+
+Systemd
+---------
+
+See logs:
+
+	```bash
+	journalctl -f -t flvlc
+	```
+
+Note: For testing enable debug build.
+
+
+
 Help commands
 -------------------
  - Key __'h'__ : toggle maximize

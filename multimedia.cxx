@@ -191,7 +191,7 @@ bool Multimedia::initialize()
 	char *pref_value;
 
 	if (0 != pref_parent->get("vlc", pref_value, " ")) {
-		Log "Init %s" Begin "Register" End;
+		log_notice("Init %s", "Register");
 
 		char *line = strtok(pref_value, " ");
 
@@ -211,7 +211,7 @@ bool Multimedia::initialize()
 		}
 
 	} else {
-		Log "Init %s" Begin "Default" End;
+		log_notice("Init %s", "Default");
 
 		vlc_instance = libvlc_new(argc, argv);
 
@@ -235,12 +235,11 @@ bool Multimedia::initialize()
 	}
 
 	if (vlc_instance == nullptr) {
-		Log "Error create new %s" Begin "vlc_instance" End;
+		log_error("Error create new %s", "vlc_instance");
 		return false;
 	}
-	Log "VERSION: %s" Begin libvlc_get_version() End;
-	Log "COMPILER: %s" Begin libvlc_get_compiler() End;
-
+	log_notice("VERSION  : %s", libvlc_get_version());
+	log_notice("COMPILER : %s", libvlc_get_compiler());
 	return true;
 }
 
@@ -254,7 +253,7 @@ int Multimedia::play(const char *media_file)
 	error = -1;
 
 	if (vlc_instance == nullptr) {
-		Log "vlc_instance == NULL, media file %s" Begin media_file End;
+		log_error("vlc_instance == NULL, media file %s",  media_file);;
 		return error;
 	}
 
@@ -262,7 +261,7 @@ int Multimedia::play(const char *media_file)
 	    libvlc_media_new_location(vlc_instance, media_file);
 
 	if (media == NULL) {
-		Log "media  == NULL, media file %s" Begin media_file End;
+		log_error("media  == NULL, media file %s",  media_file);
 		return error;
 	}
 
@@ -289,7 +288,7 @@ int Multimedia::play(const char *media_file)
 	media_player = libvlc_media_player_new_from_media(media);
 
 	if (media_player == nullptr) {
-		Log "media_player == %s" Begin "nullptr" End;
+		log_error("media_player == %s", "nullptr");
 		return false;
 	}
 

@@ -153,7 +153,7 @@ void event_control(Fl_Widget *w)
 		break;
 
 	default:
-		Log "Unknow STATE %d" Begin id End;
+		log_warning("Unknow STATE %d", id);
 	}
 }
 
@@ -498,7 +498,7 @@ void FLVLC::action_snapshot()
 #ifdef WIN32
 		TCHAR dir[MAX_PATH];
 		if (GetTempPath(MAX_PATH, dir) == 0) {
-			Log "Error GetTempPath %s" Begin dir End;
+			log_error("Error GetTempPath %s", dir);
 			return;
 		}
 #else
