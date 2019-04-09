@@ -187,12 +187,12 @@ bool Multimedia::initialize()
 	static const int def_argc = sizeof(def_argv) / sizeof(def_argv[0]);
 
 	const char *argv[20];
-	int argc = 0;
 	char *pref_value;
 
 	if (0 != pref_parent->get("vlc", pref_value, " ")) {
 		log_notice("Init %s", "Register");
 
+		int argc = 0;
 		char *line = strtok(pref_value, " ");
 
 		assert(line != NULL);
@@ -213,25 +213,16 @@ bool Multimedia::initialize()
 	} else {
 		log_notice("Init %s", "Default");
 
-		vlc_instance = libvlc_new(argc, argv);
+		vlc_instance = libvlc_new(def_argc, def_argv);
 
-		size_t size = 0;
-
-		for (int i = 0; i < def_argc; ++i) {
-			size += strlen(def_argv[i]) + 1;
-		}
-
-		char *pref = (char*)malloc(size);
-
-		pref[0] = '\0';
+		std::string pref;
 
 		for (int i = 0; i < def_argc; ++i) {
-			strcat(pref, def_argv[i]);
-			strcat(pref, " ");
+			pref += def_argv[i];
+			pref += " ";
 		}
-		pref_parent->set("vlc", pref);
+		pref_parent->set("vlc", pref.c_str());
 		pref_parent->flush();
-		free(pref);
 	}
 
 	if (vlc_instance == nullptr) {
