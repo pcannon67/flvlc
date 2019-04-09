@@ -178,19 +178,60 @@ int64_t Multimedia::get_position() const
 
 bool Multimedia::initialize()
 {
-	const char *default_argv = "--mouse-hide-timeout=5 --swscale-mode=1 "
-				   "--no-video-title-show --no-osd";
+	static const char *def_argv[] = {
+		"--mouse-hide-timeout=10",
+		"--swscale-mode=2",
+		"--no-video-title-show",
+	};
+
+	static const int def_argc = sizeof(def_argv) / sizeof(def_argv[0]);
+
+	const char *argv[20];
+	int argc = 0;
 	char *pref_value;
 
-	if (0 != pref_parent->get("vlc", pref_value, default_argv)) {
+	if (0 != pref_parent->get("vlc", pref_value, " ")) {
 		Log "Init %s" Begin "Register" End;
-		initialize_vlc(pref_value);
+
+		char *line = strtok(pref_value, " ");
+
+		assert(line != NULL);
+
+		while (line && argc < 20) {
+			argv[argc++] = strdup(line);
+			line = strtok(NULL, " ");
+		}
+
 		free(pref_value);
+
+		vlc_instance = libvlc_new(argc, argv);
+
+		for (argc--; argc >= 0; --argc) {
+			free((void*)argv[argc]);
+		}
+
 	} else {
 		Log "Init %s" Begin "Default" End;
-		initialize_vlc(default_argv);
-		pref_parent->set("vlc", default_argv);
+
+		vlc_instance = libvlc_new(argc, argv);
+
+		size_t size = 0;
+
+		for (int i = 0; i < def_argc; ++i) {
+			size += strlen(def_argv[i]) + 1;
+		}
+
+		char *pref = (char*)malloc(size);
+
+		pref[0] = '\0';
+
+		for (int i = 0; i < def_argc; ++i) {
+			strcat(pref, def_argv[i]);
+			strcat(pref, " ");
+		}
+		pref_parent->set("vlc", pref);
 		pref_parent->flush();
+		free(pref);
 	}
 
 	if (vlc_instance == nullptr) {
@@ -203,25 +244,6 @@ bool Multimedia::initialize()
 	return true;
 }
 
-/*
- * Make VLC param, char* []
- * Trim by space
- * */
-void Multimedia::initialize_vlc(const char *argv)
-{
-	std::vector<std::string> vvargv{argv};
-	std::string::size_type e = 0;
-	std::string::size_type b = 0;
-
-	do {
-		e = vvargv[0].find(' ', b);
-		vvargv.push_back(vvargv[0].substr(b, (e - b)));
-		b = e + 1;
-	} while (e < std::string::npos);
-
-	vlc_instance =
-	    libvlc_new(vvargv.size() - 1, (const char *const *)&vvargv[1]);
-}
 
 /*
  * - Si no se detuvo la reproducción,

@@ -29,6 +29,7 @@
 #include <string>
 #include <vector>
 #include <vlc/vlc.h>
+#include <assert.h>
 
 class Multimedia {
       public:
@@ -61,7 +62,6 @@ class Multimedia {
       private:
 	/* VLC lifetime */
 	bool initialize();
-	void initialize_vlc(const char *argv);
 	void release();
 
 	/* events */
