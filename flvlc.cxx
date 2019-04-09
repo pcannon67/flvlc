@@ -197,6 +197,8 @@ const char *FLVLC::parse_time(int64_t value)
 	(minute < 10) ? ss << "0" << minute << ":" : ss << minute << ":";
 	(second < 10) ? ss << "0" << second : ss << second;
 
+	// Nota: si bien es un temporal
+	// èste es copiado a variables strings.
 	return ss.str().c_str();
 }
 
