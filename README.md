@@ -56,11 +56,7 @@ Compile
 Systemd
 ---------
 
-See logs:
-
-	```bash
-	journalctl -f -t flvlc
-	```
+See logs: `journalctl -f -t flvlc`
 
 Note: For testing enable debug build.
 
