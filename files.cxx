@@ -1,5 +1,5 @@
 /*
-	Copyright (C) 2015 Daniel T. Borelli
+	Copyright (C) 2015, 2019 Daniel T. Borelli
 
 	This file is part of flvlc.
 
