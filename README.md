@@ -23,22 +23,31 @@ Compile
 - Linux
 
 	- Requirements:
-		  - FLTK 1.3
-		  - libvlc 2.1 ( or vlc 2.1 )
-		  - cmake 2.8 
+		  - FLTK >=1.3
+		  - libvlc >=2.1 ( or vlc 2.1 )
+		  - cmake >=2.8
 		  - GCC support c++11
 
-- Windows (mingw)
+- Windows (mingw) (testing,obsolete)
 	
 	- Requirements:
-		  - FLTK 1.3-snapshot
-		  - vlc 2.1 sdk
-		  - cmake 2.8 
+		  - FLTK >=1.3-snapshot
+		  - vlc >=2.1 sdk
+		  - cmake >=2.8
 		  - GCC support gnu++11
+
+- Build
+
+	```bash
+	mkdir build && cd build
+	cmake -DCMAKE_BUILD_TYPE=Release .. && make
+			-- or --
+	cmake -DCMAKE_BUILD_TYPE=Debug .. && make
+	```
 
 Help commands
 -------------------
- - Key __'h'__ :	toggle maximize 
+ - Key __'h'__ : toggle maximize
  - Key __'l'__ : show playlist window
  - Key __'p'__ : show preferences window
  - Key __'u'__ : open URL
@@ -46,11 +55,11 @@ Help commands
  - Key __'o'__ : open file
  - key __'t'__ : show subtitles window
  - Key __'w'__ : watch toggle
- - Key __'r'__ : toggle repeat 
+ - Key __'r'__ : toggle repeat
  - Key __'f'__ : toggle fullscreen
  - Key __'m'__ : toggle mute audio
  - Key __'s'__ : stop media
- - Key __'Esc'__ or __'q'__ : quit 
+ - Key __'Esc'__ or __'q'__ : quit
  - Key __'n'__ : next media
  - Key __'b'__ : previous media
  - Key __'Space'__ : toggle play/pause
