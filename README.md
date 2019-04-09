@@ -23,17 +23,28 @@ Compile
 - Linux
 
 	- Requirements:
+
 		  - FLTK >=1.3
+
 		  - libvlc >=2.1 ( or vlc 2.1 )
+
+			  Note: some "distros" need extra plugins.
+
 		  - cmake >=2.8
+
 		  - GCC support c++11
+
 
 - Windows (mingw) (testing,obsolete)
 	
 	- Requirements:
+
 		  - FLTK >=1.3-snapshot
+
 		  - vlc >=2.1 sdk
+
 		  - cmake >=2.8
+
 		  - GCC support gnu++11
 
 - Build
