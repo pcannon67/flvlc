@@ -47,7 +47,7 @@ Fl_Menu_Item MainWindow::menu_items[] = {
 	{ 0 }
 };
 
-MainWindow::MainWindow() : Fl_Double_Window(0, 0, 445, 415, "flvlc")
+MainWindow::MainWindow() : Fl_Double_Window(0, 0, 445, 415, TITLE)
 {
 	clear_flag(16);
 

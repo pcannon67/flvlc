@@ -46,6 +46,8 @@ extern void window_close_x(Fl_Widget *, void *);
 #include <FL/Fl_Window.H>
 #include <FL/fl_ask.H>
 
+#include "version.hpp"
+
 class MainWindow : public Fl_Double_Window {
       public:
 	MainWindow();

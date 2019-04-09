@@ -86,5 +86,3 @@ Notes
 - Automatically save and load playlist.
 
 
-See Changelog.
-
