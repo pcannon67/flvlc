@@ -20,6 +20,6 @@
 
 #pragma once
 
-#define VERSION "2.5"
+#define VERSION "2.6"
 
 #define TITLE  ("flvlc v" VERSION)
