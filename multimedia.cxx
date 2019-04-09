@@ -134,6 +134,7 @@ void Multimedia::event(const libvlc_event_t* event, void* data)
 		FLVLC::cb_time_changed( time );
 	  	break;
 	  }
+	  /*XXX: ya no funciona, SEGV - 2019
 	case libvlc_MediaPlayerEncounteredError:
 	  {
 		if ( nullptr != data  )
@@ -142,7 +143,7 @@ void Multimedia::event(const libvlc_event_t* event, void* data)
 		   ((Multimedia*)(data))->error = -1;
 		}
 		break;
-	  }
+	  }*/
 	case libvlc_MediaPlayerLengthChanged:
 	  {
 	  	const int64_t length = event->u.media_player_length_changed.new_length; 
@@ -158,7 +159,9 @@ void Multimedia::register_events()
   event_manager = libvlc_media_player_event_manager(media_player);
 
   libvlc_event_attach(event_manager, libvlc_MediaPlayerEndReached, event, NULL);
+  /*XXX: ya no funciona, SEGV - 2019
   libvlc_event_attach(event_manager, libvlc_MediaPlayerEncounteredError, event, this);
+  */
   libvlc_event_attach(event_manager, libvlc_MediaPlayerTimeChanged, event, NULL);
   libvlc_event_attach(event_manager, libvlc_MediaPlayerLengthChanged, event, NULL);
 }
@@ -167,7 +170,9 @@ void Multimedia::register_events()
 void Multimedia::unregister_events() const
 {
   libvlc_event_detach(event_manager, libvlc_MediaPlayerEndReached, event, NULL);
+  /*XXX: ya no funciona, SEGV - 2019
   libvlc_event_detach(event_manager, libvlc_MediaPlayerEncounteredError, event, NULL);
+  */
   libvlc_event_detach(event_manager, libvlc_MediaPlayerTimeChanged, event, NULL);
   libvlc_event_detach(event_manager, libvlc_MediaPlayerLengthChanged, event, NULL);
 }
