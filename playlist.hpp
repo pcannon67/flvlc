@@ -89,5 +89,3 @@ class Playlist
 	const ITEMS & get_items() const;
 };
 
-
-/* vim: set ts=4 sw=2 tw=0 noet :*/

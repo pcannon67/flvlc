@@ -39,6 +39,3 @@ namespace FILES
   bool make_name_file(std::string& name, const char *file);
 };
 
-  	
-
-/* vim: set ts=4 sw=2 tw=0 noet :*/

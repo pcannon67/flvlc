@@ -49,4 +49,3 @@ class PlaylistWindow : public Fl_Menu_Window
 	void set_playlist();
 };
 
-/* vim: set ts=4 sw=2 tw=0 noet :*/

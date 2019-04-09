@@ -466,5 +466,3 @@ int64_t Multimedia::get_audio_track_delay() const
   return -1;
 }
 
-
-/* vim: set ts=4 sw=2 tw=0 noet :*/

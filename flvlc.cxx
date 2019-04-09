@@ -944,4 +944,3 @@ int main(const int argc, const char* argv[] )
 }
 
 
-/* vim: set ts=4 sw=2 tw=0 noet :*/

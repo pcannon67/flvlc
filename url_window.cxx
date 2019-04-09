@@ -106,5 +106,3 @@ void URL_Window::check_input_empty(void *data)
   Fl::repeat_timeout(0.100f, URL_Window::check_input_empty, data);
 }
   	  
-
-/* vim: set ts=4 sw=2 tw=0 noet :*/

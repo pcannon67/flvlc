@@ -394,4 +394,3 @@ void MainWindow::showOSD()
   }
 }
 
-/* vim: set ts=4 sw=2 tw=0 noet :*/

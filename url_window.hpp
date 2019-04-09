@@ -49,4 +49,3 @@ class URL_Window : public Fl_Menu_Window
   	static void check_input_empty(void *data);
 };
 
-/* vim: set ts=4 sw=2 tw=0 noet :*/
