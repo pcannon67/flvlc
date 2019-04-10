@@ -63,11 +63,11 @@ void FLVLC::cb_length_changed(int64_t value)
 
 void FLVLC::update_time_info(const uint64_t value)
 {
-	static std::string total;
+	static std::string time_now;
 
-	total = parse_time(value);
-	total += " / " + time_length;
-	window.box_time->label(total.c_str());
+	time_now = parse_time(value);
+	time_now += " / " + time_length;
+	window.box_time->label(time_now.c_str());
 }
 
 void FLVLC::update_label_playlist()
