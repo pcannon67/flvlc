@@ -295,7 +295,10 @@ void FLVLC::action_video()
 {
 	if (nullptr != multimedia) {
 		const int64_t value = window.sl_video->value();
-		update_time_info(value);
+
+		if (FLVLC::state == MainWindow::STATE::PAUSE) {
+			update_time_info(value);
+		}
 		multimedia->set_position(value);
 	}
 }
