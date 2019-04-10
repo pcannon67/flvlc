@@ -136,29 +136,29 @@ void Multimedia::register_events()
 	event_manager = libvlc_media_player_event_manager(media_player);
 
 	libvlc_event_attach(event_manager, libvlc_MediaPlayerEndReached, event,
-			    NULL);
+			    nullptr);
 	/*XXX: ya no funciona, SEGV - 2019
 	libvlc_event_attach(event_manager, libvlc_MediaPlayerEncounteredError,
 	event, this);
 	*/
 	libvlc_event_attach(event_manager, libvlc_MediaPlayerTimeChanged, event,
-			    NULL);
+			    nullptr);
 	libvlc_event_attach(event_manager, libvlc_MediaPlayerLengthChanged,
-			    event, NULL);
+			    event, nullptr);
 }
 
 void Multimedia::unregister_events() const
 {
 	libvlc_event_detach(event_manager, libvlc_MediaPlayerEndReached, event,
-			    NULL);
+			    nullptr);
 	/*XXX: ya no funciona, SEGV - 2019
 	libvlc_event_detach(event_manager, libvlc_MediaPlayerEncounteredError,
-	event, NULL);
+	event, nullptr);
 	*/
 	libvlc_event_detach(event_manager, libvlc_MediaPlayerTimeChanged, event,
-			    NULL);
+			    nullptr);
 	libvlc_event_detach(event_manager, libvlc_MediaPlayerLengthChanged,
-			    event, NULL);
+			    event, nullptr);
 }
 
 void Multimedia::set_position(const int64_t position) const
@@ -195,11 +195,11 @@ bool Multimedia::initialize()
 		int argc = 0;
 		char *line = strtok(pref_value, " ");
 
-		assert(line != NULL);
+		assert(line != nullptr);
 
 		while (line && argc < 20) {
 			argv[argc++] = strdup(line);
-			line = strtok(NULL, " ");
+			line = strtok(nullptr, " ");
 		}
 
 		free(pref_value);
@@ -244,15 +244,15 @@ int Multimedia::play(const char *media_file)
 	error = -1;
 
 	if (vlc_instance == nullptr) {
-		log_error("vlc_instance == NULL, media file %s",  media_file);;
+		log_error("vlc_instance == nullptr, media file %s",  media_file);;
 		return error;
 	}
 
 	libvlc_media_t *media =
 	    libvlc_media_new_location(vlc_instance, media_file);
 
-	if (media == NULL) {
-		log_error("media  == NULL, media file %s",  media_file);
+	if (media == nullptr) {
+		log_error("media  == nullptr, media file %s",  media_file);
 		return error;
 	}
 

@@ -23,7 +23,7 @@ void FLVLC::cb_end()
 #ifdef WIN32
 	// TODO: mientras MinGW no actialice gcc
 	pthread_t th;
-	pthread_create(&th, NULL, &action_stop_next, (void *)NULL);
+	pthread_create(&th, nullptr, &action_stop_next, (void *)nullptr);
 	pthread_detach(th);
 #else
 	std::thread th{action_stop_next};
@@ -175,7 +175,7 @@ void window_close_x(Fl_Widget *, void *)
 
 void FLVLC::toggle_fullscreen()
 {
-	if (multimedia == NULL or playlist.is_empty() or
+	if (multimedia == nullptr or playlist.is_empty() or
 	    not multimedia->is_valid_media()) {
 		return;
 	}
@@ -305,7 +305,7 @@ void FLVLC::action_video()
 
 void FLVLC::action_quit()
 { 
-	window_close_x(NULL, NULL);
+	window_close_x(nullptr, nullptr);
 }
 
 void FLVLC::action_play_pause()

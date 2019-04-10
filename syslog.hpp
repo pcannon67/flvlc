@@ -26,7 +26,7 @@
 
 static void va_log(int option, char const*const format, ...)
 {
-	assert(format != NULL);
+	assert(format != nullptr);
 
 	va_list vl;
 	va_start(vl, format);
