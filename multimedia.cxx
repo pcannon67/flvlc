@@ -108,7 +108,7 @@ void Multimedia::event(const libvlc_event_t *event, void *data)
 		break;
 	}
 	case libvlc_MediaPlayerTimeChanged: { // not if pause
-		const int64_t time =
+		const float time =
 		    event->u.media_player_time_changed.new_time;
 		FLVLC::cb_time_changed(time);
 		break;
@@ -123,7 +123,7 @@ void Multimedia::event(const libvlc_event_t *event, void *data)
 		break;
 	}*/
 	case libvlc_MediaPlayerLengthChanged: {
-		const int64_t length =
+		const float length =
 		    event->u.media_player_length_changed.new_length;
 		FLVLC::cb_length_changed(length);
 		break;
@@ -161,14 +161,14 @@ void Multimedia::unregister_events() const
 			    event, nullptr);
 }
 
-void Multimedia::set_position(const int64_t position) const
+void Multimedia::set_position(const float position) const
 {
 	if (is_valid_media()) {
 		libvlc_media_player_set_time(media_player, position);
 	}
 }
 
-int64_t Multimedia::get_position() const
+float Multimedia::get_position() const
 {
 	if (is_valid_media()) {
 		return libvlc_media_player_get_time(media_player);
@@ -362,14 +362,14 @@ void Multimedia::set_video_subtitle(const char *file) const
 	}
 }
 
-void Multimedia::set_video_subtitle_delay(const int64_t delay) const
+void Multimedia::set_video_subtitle_delay(const float delay) const
 {
 	if (is_valid_media()) {
 		libvlc_video_set_spu_delay(media_player, delay * 1000000);
 	}
 }
 
-int64_t Multimedia::get_video_subtitle_delay() const
+float Multimedia::get_video_subtitle_delay() const
 {
 	if (is_valid_media()) {
 		return libvlc_video_get_spu_delay(media_player) / 1000000;
@@ -403,14 +403,14 @@ void Multimedia::set_audio_track(const int id) const
 	}
 }
 
-void Multimedia::set_audio_track_delay(const int64_t delay) const
+void Multimedia::set_audio_track_delay(const float delay) const
 {
 	if (is_valid_media()) {
 		libvlc_audio_set_delay(media_player, delay * 1000000);
 	}
 }
 
-int64_t Multimedia::get_audio_track_delay() const
+float Multimedia::get_audio_track_delay() const
 {
 	if (is_valid_media()) {
 		return libvlc_audio_get_delay(media_player) / 1000000;

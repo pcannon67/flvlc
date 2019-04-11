@@ -55,19 +55,19 @@ static MainWindow::STATE state = MainWindow::STATE::STOP;
 static bool b_fullscreen = false;
 static constexpr char *time_cero = "00:00:00 / 00:00:00";
 static std::string time_length;
-static int64_t video_percent_low;
-static int64_t video_percent_high;
+static float video_percent_low;
+static float video_percent_high;
 
 void cb_end();
-void cb_time_changed(int64_t value);
-void cb_length_changed(int64_t value);
+void cb_time_changed(float value);
+void cb_length_changed(float value);
 
 void initialize_volume();
 void initialize_preferences();
 void update_title_info();
-void update_time_info(const uint64_t value);
+void update_time_info(const float value);
 void toggle_fullscreen();
-const std::string parse_time(int64_t value);
+const std::string parse_time(float value);
 void update_gui(void *);
 void up_volume();
 void down_volume();

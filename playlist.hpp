@@ -30,7 +30,7 @@
 
 struct Item {
 	std::string name;
-	int64_t position;
+	float position;
 	bool b_watch;
 };
 
@@ -56,8 +56,8 @@ class Playlist {
 	bool is_prev() const;
 	bool is_next() const;
 	const char *title() const;
-	void watch(const int64_t pos);
-	int64_t watch() const;
+	void watch(const float pos);
+	float watch() const;
 	bool is_watch() const;
 	void set_watch(bool val);
 	bool load(const char *path);

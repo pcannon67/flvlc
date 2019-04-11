@@ -201,12 +201,12 @@ void Playlist::position(const unsigned int pos)
 	ipos = pos - 1;
 }
 
-void Playlist::watch(const int64_t pos)
+void Playlist::watch(const float pos)
 {
 	items.at(ipos).position = pos;
 }
 
-int64_t Playlist::watch() const
+float Playlist::watch() const
 {
 	return items.at(ipos).position;
 }

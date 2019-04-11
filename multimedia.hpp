@@ -80,8 +80,8 @@ class Multimedia {
 	void pause() const;
 	void mute();
 	bool is_mute() const;
-	void set_position(const int64_t position) const;
-	int64_t get_position() const;
+	void set_position(const float position) const;
+	float get_position() const;
 	//	bool exist_audio();
 	bool is_valid_media() const;
 
@@ -89,13 +89,13 @@ class Multimedia {
 	int get_video_subtitle() const;
 	void set_video_subtitle(const int id) const;
 	void set_video_subtitle(const char *file) const;
-	void set_video_subtitle_delay(const int64_t delay) const;
-	int64_t get_video_subtitle_delay() const;
+	void set_video_subtitle_delay(const float delay) const;
+	float get_video_subtitle_delay() const;
 
 	Multimedia::Track get_audio_track_description() const;
 	int get_audio_track() const;
 	void set_audio_track(const int id) const;
-	void set_audio_track_delay(const int64_t delay) const;
-	int64_t get_audio_track_delay() const;
+	void set_audio_track_delay(const float delay) const;
+	float get_audio_track_delay() const;
 	void snapshot(const char *path) const;
 };

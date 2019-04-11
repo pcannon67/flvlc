@@ -32,7 +32,7 @@ void FLVLC::cb_end()
 }
 
 /* No se recibe feedback si estado es pause*/
-void FLVLC::cb_time_changed(int64_t value)
+void FLVLC::cb_time_changed(float value)
 {
 	update_time_info(value);
 
@@ -43,7 +43,7 @@ void FLVLC::cb_time_changed(int64_t value)
 	}
 }
 
-void FLVLC::cb_length_changed(int64_t value)
+void FLVLC::cb_length_changed(float value)
 {
 	// TODO: al archivo de configuración.
 	const unsigned int minutes_seek_low = 2;
@@ -61,7 +61,7 @@ void FLVLC::cb_length_changed(int64_t value)
 	}
 }
 
-void FLVLC::update_time_info(const uint64_t value)
+void FLVLC::update_time_info(const float value)
 {
 	static std::string time_now;
 
@@ -121,6 +121,9 @@ void event_control(Fl_Widget *w)
 		break;
 
 	case STATE::VIDEO:
+		if (FLVLC::window.sl_video->value() == FLVLC::window.sl_video->maximum()) {
+			FLVLC::action_stop_next();
+		}
 		FLVLC::action_video();
 		break;
 
@@ -183,19 +186,19 @@ void FLVLC::toggle_fullscreen()
 	window.toggle_fullscreen();
 }
 
-const std::string FLVLC::parse_time(int64_t value)
+const std::string FLVLC::parse_time(float value)
 {
 	lldiv_t qr = lldiv(value, 1000);
 	qr = lldiv(qr.quot, 60);
-	const int64_t second = qr.rem;
+	const float second = qr.rem;
 	qr = lldiv(qr.quot, 60);
-	const int64_t minute = qr.rem;
-	const int64_t hour = qr.quot;
+	const float minute = qr.rem;
+	const float hour = qr.quot;
 
 	std::stringstream ss;
-	(hour < 10) ? ss << "0" << hour << ":" : ss << hour << ":";
-	(minute < 10) ? ss << "0" << minute << ":" : ss << minute << ":";
-	(second < 10) ? ss << "0" << second : ss << second;
+	(hour < 10.0f) ? ss << "0" << hour << ":" : ss << hour << ":";
+	(minute < 10.0f) ? ss << "0" << minute << ":" : ss << minute << ":";
+	(second < 10.0f) ? ss << "0" << second : ss << second;
 
 	return ss.str();
 }
@@ -294,7 +297,7 @@ void FLVLC::action_volume()
 void FLVLC::action_video()
 {
 	if (nullptr != multimedia) {
-		const int64_t value = window.sl_video->value();
+		const float value = window.sl_video->value();
 
 		if (FLVLC::state == MainWindow::STATE::PAUSE) {
 			update_time_info(value);
@@ -637,36 +640,48 @@ int MainWindow::handle(int event)
 
 		case FL_Right:
 			if (FLVLC::state != MainWindow::STATE::STOP) {
-				FLVLC::window.sl_video->value(
-				    FLVLC::window.sl_video->value() +
-				    FLVLC::video_percent_low);
+				double value =	FLVLC::window.sl_video->value() +
+						FLVLC::video_percent_low;
+				FLVLC::window.sl_video->value(value);
+				if (value > FLVLC::window.sl_video->maximum()) {
+					FLVLC::action_stop_next();
+				}
 				FLVLC::action_video();
 			}
 			break;
 
 		case FL_Up:
 			if (FLVLC::state != MainWindow::STATE::STOP) {
-				FLVLC::window.sl_video->value(
-				    FLVLC::window.sl_video->value() +
-				    FLVLC::video_percent_high);
+				double value =	FLVLC::window.sl_video->value() +
+						FLVLC::video_percent_high;
+				if (value > FLVLC::window.sl_video->maximum()) {
+					FLVLC::action_stop_next();
+				}
+				FLVLC::window.sl_video->value(value);
 				FLVLC::action_video();
 			}
 			break;
 
 		case FL_Left:
 			if (FLVLC::state != MainWindow::STATE::STOP) {
-				FLVLC::window.sl_video->value(
-				    FLVLC::window.sl_video->value() -
-				    FLVLC::video_percent_low);
+				double value =	FLVLC::window.sl_video->value() -
+						FLVLC::video_percent_low;
+				if (value < FLVLC::window.sl_video->minimum()) {
+					value = FLVLC::window.sl_video->minimum();
+				}
+				FLVLC::window.sl_video->value(value);
 				FLVLC::action_video();
 			}
 			break;
 
 		case FL_Down:
 			if (FLVLC::state != MainWindow::STATE::STOP) {
-				FLVLC::window.sl_video->value(
-				    FLVLC::window.sl_video->value() -
-				    FLVLC::video_percent_high);
+				double value =	FLVLC::window.sl_video->value() -
+						FLVLC::video_percent_high;
+				if (value < FLVLC::window.sl_video->minimum()) {
+					value = FLVLC::window.sl_video->minimum();
+				}
+				FLVLC::window.sl_video->value(value);
 				FLVLC::action_video();
 			}
 			break;
