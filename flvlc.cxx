@@ -178,7 +178,8 @@ void window_close_x(Fl_Widget *, void *)
 
 void FLVLC::toggle_fullscreen()
 {
-	if (multimedia == nullptr or playlist.is_empty() or
+	assert(multimedia);
+	if (playlist.is_empty() or
 	    not multimedia->is_valid_media()) {
 		return;
 	}
@@ -207,10 +208,9 @@ const std::string FLVLC::parse_time(float value)
 
 void FLVLC::action_mute()
 {
-	if (nullptr != multimedia) {
-		window.mute_toggle();
-		multimedia->mute();
-	}
+	assert(multimedia);
+	window.mute_toggle();
+	multimedia->mute();
 }
 
 void FLVLC::action_repeat()
@@ -257,9 +257,10 @@ void FLVLC::action_playlist()
 
 void FLVLC::action_subtitles()
 {
+	assert(multimedia);
+
 	if (FLVLC::state != MainWindow::STATE::STOP and
-	    playlist.count() != 0 and multimedia != nullptr and
-	    sbt_window == nullptr) {
+	    playlist.count() != 0 and sbt_window == nullptr) {
 		sbt_window = new SubtitlesWindow(
 		    Fl::event_x_root(), Fl::event_y_root(), multimedia);
 
@@ -289,21 +290,19 @@ void FLVLC::action_preferences()
 
 void FLVLC::action_volume()
 {
-	if (nullptr != multimedia) {
-		multimedia->set_volume(FLVLC::window.sl_volume->value());
-	}
+	assert(multimedia);
+	multimedia->set_volume(FLVLC::window.sl_volume->value());
 }
 
 void FLVLC::action_video()
 {
-	if (nullptr != multimedia) {
-		const float value = window.sl_video->value();
+	assert(multimedia);
+	const float value = window.sl_video->value();
 
-		if (FLVLC::state == MainWindow::STATE::PAUSE) {
-			update_time_info(value);
-		}
-		multimedia->set_position(value);
+	if (FLVLC::state == MainWindow::STATE::PAUSE) {
+		update_time_info(value);
 	}
+	multimedia->set_position(value);
 }
 
 void FLVLC::action_quit()
@@ -313,7 +312,9 @@ void FLVLC::action_quit()
 
 void FLVLC::action_play_pause()
 {
-	if (multimedia == nullptr or playlist.is_empty()) {
+	assert(multimedia);
+
+	if (playlist.is_empty()) {
 		return;
 	}
 
@@ -335,7 +336,9 @@ void FLVLC::action_play_pause()
 
 void FLVLC::action_stop()
 {
-	if (nullptr == multimedia or MainWindow::STATE::STOP == state) {
+	assert(multimedia);
+
+	if (MainWindow::STATE::STOP == state) {
 		return;
 	}
 
@@ -374,7 +377,9 @@ void FLVLC::action_stop()
 
 void FLVLC::action_prev()
 {
-	if (nullptr == multimedia or playlist.is_empty() or
+	assert(multimedia);
+
+	if (playlist.is_empty() or
 	    not playlist.is_prev()) {
 		return;
 	}
@@ -384,7 +389,9 @@ void FLVLC::action_prev()
 
 void FLVLC::action_next()
 {
-	if (nullptr == multimedia or playlist.is_empty() or
+	assert(multimedia);
+
+	if (playlist.is_empty() or
 	    not playlist.is_next()) {
 		return;
 	}
@@ -500,7 +507,8 @@ void FLVLC::action_open_url()
 
 void FLVLC::action_snapshot()
 {
-	if (nullptr != multimedia and state != MainWindow::STATE::STOP) {
+	assert(multimedia);
+	if (state != MainWindow::STATE::STOP) {
 #ifdef WIN32
 		TCHAR dir[MAX_PATH];
 		if (GetTempPath(MAX_PATH, dir) == 0) {
