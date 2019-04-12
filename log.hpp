@@ -44,10 +44,10 @@ static void va_fprintf(FILE *file, char const *const format, ...)
 #endif
 
 #define print_warning(...)	\
-	va_fprintf(stdout, "Warning: " preformat __VA_ARGS__)
+	va_fprintf(stdout, "[flvlc] Warning: " preformat __VA_ARGS__)
 
 #define print_error(...)	\
-	va_fprintf(stderr, "Error: " preformat __VA_ARGS__)
+	va_fprintf(stderr, "[flvlc] Error: " preformat __VA_ARGS__)
 
 #define print_notice(...)	\
-	va_fprintf(stdout, "Notice: " preformat __VA_ARGS__)
+	va_fprintf(stdout, "[flvlc] Notice: " preformat __VA_ARGS__)
