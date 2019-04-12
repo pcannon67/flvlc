@@ -254,7 +254,7 @@ void MainWindow::mute_toggle()
 		btn_mute->tooltip("Mute on");
 	}
 
-	btn_mute->redraw();
+	btn_mute->redraw_label();
 	toggle_mute = !toggle_mute;
 }
 
@@ -274,21 +274,21 @@ void MainWindow::repeat_toggle()
 		btn_repeat->tooltip("Repeat none");
 	}
 
-	btn_repeat->redraw();
+	btn_repeat->redraw_label();
 }
 
 void MainWindow::watch_on()
 {
 	btn_watch->image(image_watch_active_on);
 	btn_watch->tooltip("Watch on");
-	btn_watch->redraw();
+	btn_watch->redraw_label();
 }
 
 void MainWindow::watch_off()
 {
 	btn_watch->image(image_watch_active);
 	btn_watch->tooltip("Watch off");
-	btn_watch->redraw();
+	btn_watch->redraw_label();
 }
 
 void MainWindow::play_pause_toggle()
@@ -301,7 +301,7 @@ void MainWindow::play_pause_toggle()
 		btn_play_pause->tooltip("Pause");
 	}
 
-	btn_play_pause->redraw();
+	btn_play_pause->redraw_label();
 	toggle_pause = !toggle_pause;
 }
 
