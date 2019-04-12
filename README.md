@@ -53,12 +53,11 @@ Compile
 
 
 
-Systemd
+Testing
 ---------
 
-See logs: `journalctl -f -t flvlc`
-
-Note: For testing enable debug build.
+For testing enable debug build.
+See logs from a terminal.
 
 
 
