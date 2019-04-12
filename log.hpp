@@ -21,18 +21,9 @@
 #pragma once
 
 #include <stdarg.h>
-#include <syslog.h>
 #include <stdio.h>
 #include <assert.h>
 
-static void va_log(const int option, char const *const format, ...)
-{
-	assert(format);
-	va_list vl;
-	va_start(vl, format);
-	vsyslog(option, format, vl);
-	va_end(vl);
-}
 
 static void va_fprintf(FILE *file, char const *const format, ...)
 {
@@ -51,15 +42,6 @@ static void va_fprintf(FILE *file, char const *const format, ...)
 #else
 #define preformat
 #endif
-
-#define log_warning(...)	\
-	va_log(LOG_WARNING, "Warning: " preformat __VA_ARGS__)
-
-#define log_error(...)		\
-	va_log(LOG_ERR, "Error: " preformat __VA_ARGS__)
-
-#define log_notice(...)		\
-	va_log(LOG_NOTICE,"Notice: " preformat __VA_ARGS__)
 
 #define print_warning(...)	\
 	va_fprintf(stdout, "Warning: " preformat __VA_ARGS__)
