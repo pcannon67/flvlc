@@ -26,11 +26,6 @@
 
 #include <sstream>
 
-//#ifdef DEBUG
-//#include <iostream>
-//#define LOG(x) std::cerr << "#Func: " << __func__ << "() #Line: " << __LINE__
-//<< " #Msg: " << (x) << std::endl #else #define LOG(x) #endif
-
 #include <FL/filename.H> // FL_PATH_MAX
 
 #include "main_window.hpp"

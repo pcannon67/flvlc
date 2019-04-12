@@ -25,8 +25,8 @@ Multimedia::Multimedia(Fl_Preferences *pref_parent, const HWND window_id,
 Multimedia::Multimedia(Fl_Preferences *pref_parent, const int window_id,
 #endif
 		const int width, const int height)
-		: pref_parent(pref_parent), window_id(window_id), width(width),
-		  height(height)
+		: window_id(window_id), width(width),
+		  height(height), pref_parent(pref_parent)
 {
 	// TODO: catch
 	initialize();
