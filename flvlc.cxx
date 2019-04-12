@@ -836,6 +836,10 @@ void FLVLC::save_playlist()
 
 int main(const int argc, const char *argv[])
 {
+	print_notice("Version: %s - Build: %s\n", VERSION, BUILD);
+	print_notice("VLC version: %s\n", libvlc_get_version());
+	print_notice("VLC compiler: %s\n", libvlc_get_compiler());
+
 	FLVLC::window.center_on_screen();
 	FLVLC::window.show();
 	FLVLC::initialize_preferences();

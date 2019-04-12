@@ -229,8 +229,6 @@ bool Multimedia::initialize()
 		print_error("Error create new %s\n", "vlc_instance");
 		return false;
 	}
-	print_notice("VLC version  : %s\n", libvlc_get_version());
-	print_notice("VLC compiler : %s\n", libvlc_get_compiler());
 	return true;
 }
 

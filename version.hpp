@@ -23,3 +23,9 @@
 #define VERSION "2.11"
 
 #define TITLE  ("flvlc v" VERSION)
+
+#ifdef DEBUG
+#define BUILD "Debug"
+#else
+#define BUILD "Release"
+#endif
