@@ -39,7 +39,7 @@
 #include "playlist_window.hpp"
 #include "preferences_window.hpp"
 #include "subtitles_window.hpp"
-#include "syslog.hpp"
+#include "log.hpp"
 #include "url_window.hpp"
 
 namespace FLVLC {
