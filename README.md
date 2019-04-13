@@ -2,8 +2,6 @@ flvlc
 =====
 
 
-<a href="https://postimages.org/" target="_blank"><img src="https://i.postimg.cc/D0LGKBf6/flvlc-01.png" alt="flvlc-01"/></a><br/><br/>
-
 <a href="https://postimages.org/" target="_blank"><img src="https://i.postimg.cc/ydwR5wKW/flvlc-00.png" alt="flvlc-00"/></a><br/><br/>
 
 
