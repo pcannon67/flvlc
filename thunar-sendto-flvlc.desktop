@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=flvlc
-Name[es]=flvlc
-Icon=
-Exec=/usr/bin/flvlc %F

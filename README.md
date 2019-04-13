@@ -5,11 +5,6 @@ flvlc
 <a href='https://postimages.org/' target='_blank'><img src='https://i.postimg.cc/9MRnH6v9/flvlc.png' border='0' alt='flvlc'/></a>
 
 
-Download:
----------
-From [SourceForge](http://sourceforge.net/projects/flvlc)
-or from [Git](https://github.com/spycapitan/flvlc)
-
 
 Platform:
 ----------
