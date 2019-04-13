@@ -347,7 +347,13 @@ void Multimedia::set_video_subtitle(const int id) const
 void Multimedia::set_video_subtitle(const char *file) const
 {
 	if (is_valid_media()) {
+#if (LIBVLC_VERSION_MAJOR < 3)
 		libvlc_video_set_subtitle_file(media_player, file);
+#else
+		libvlc_media_player_add_slave(media_player,
+				libvlc_media_slave_type_subtitle,
+				file, true);
+#endif
 	}
 }
 

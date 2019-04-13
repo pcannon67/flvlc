@@ -23,7 +23,9 @@
 #include <string>
 #include <vector>
 #include <vlc/vlc.h>
+#include <vlc/libvlc_version.h>
 #include <assert.h>
+
 
 class Multimedia {
       public:
