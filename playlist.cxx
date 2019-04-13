@@ -168,7 +168,7 @@ bool Playlist::is_prev() const
 
 bool Playlist::is_next() const
 {
-	return ((ipos + 1) != count());
+	return ((size_t)(ipos + 1) != count());
 }
 
 void Playlist::reset()

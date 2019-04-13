@@ -18,6 +18,23 @@
 */
 #include "flvlc.hpp"
 
+namespace FLVLC {
+static MainWindow window;
+static Multimedia *multimedia = nullptr;
+static Playlist playlist;
+static PlaylistWindow *pl_window = nullptr;
+static SubtitlesWindow *sbt_window = nullptr;
+static URL_Window *url_window = nullptr;
+static Preferences_Window *pref_window = nullptr;
+static Fl_Preferences *preferences = nullptr;
+static MainWindow::STATE state = MainWindow::STATE::STOP;
+static bool b_fullscreen = false;
+static constexpr char *time_cero = "00:00:00 / 00:00:00";
+static std::string time_length;
+static float video_percent_low;
+static float video_percent_high;
+};
+
 void FLVLC::cb_end()
 {
 	std::thread th{action_stop_next};
