@@ -19,10 +19,6 @@
 
 #pragma once
 
-#ifdef WIN32
-#include <windows.h>
-#endif
-
 #include <FL/Fl.H>
 #include <FL/filename.H>
 #include <FL/x.H>
@@ -109,12 +105,7 @@ class MainWindow : public Fl_Double_Window {
 			 Fl_Pixmap &active, Fl_Pixmap &inactive);
 
       public:
-#ifdef WIN32
-	HWND get_id() const;
-#else
 	int get_id() const;
-#endif
-
 	void center_on_screen();
 	int get_w() const;
 	int get_h() const;

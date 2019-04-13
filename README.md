@@ -11,6 +11,14 @@ From [SourceForge](http://sourceforge.net/projects/flvlc)
 or from [Git](https://github.com/spycapitan/flvlc)
 
 
+Platform:
+----------
+
+GNU/Linux.
+
+Windows (flvlc <=2.12, end support).
+
+
 Compile
 -------
 - Linux
@@ -26,19 +34,6 @@ Compile
 		  - cmake >=2.8
 
 		  - GCC support c++11
-
-
-- Windows (mingw) (testing,obsolete)
-	
-	- Requirements:
-
-		  - FLTK >=1.3-snapshot
-
-		  - vlc >=2.1 sdk
-
-		  - cmake >=2.8
-
-		  - GCC support gnu++11
 
 - Build
 

@@ -18,12 +18,6 @@
 */
 #pragma once
 
-#ifdef WIN32
-#include <windows.h>
-#define hypot hypot
-#include <cmath>
-#endif
-
 #include <FL/Fl_Preferences.H>
 #include <algorithm>
 #include <string>
@@ -35,11 +29,7 @@ class Multimedia {
       public:
 	using VecArgv = std::vector<std::string>;
 	using Track = libvlc_track_description_t *;
-#ifdef WIN32
-	Multimedia(Fl_Preferences *pref_parent, const HWND window_id,
-#else
 	Multimedia(Fl_Preferences *pref_parent, const int window_id,
-#endif
 		   const int width, const int height);
 
 	~Multimedia();
@@ -48,11 +38,7 @@ class Multimedia {
 	libvlc_instance_t *vlc_instance = nullptr;
 	libvlc_media_player_t *media_player = nullptr;
 	libvlc_event_manager_t *event_manager = nullptr;
-#ifdef WIN32
-	HWND window_id = 0;
-#else
 	int window_id = 0;
-#endif
 	int width = 0;
 	int height = 0;
 	bool b_mute = false;

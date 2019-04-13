@@ -20,12 +20,8 @@
 
 #include "playlist.hpp"
 
-#ifdef WIN32
-#include <windows.h>
-#else
 #include <dirent.h>
 #include <sys/stat.h>
-#endif
 
 #include <FL/filename.H>
 #include <fstream>

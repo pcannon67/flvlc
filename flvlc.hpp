@@ -18,12 +18,7 @@
 */
 #pragma once
 
-#ifdef WIN32
-#include <pthread.h>
-#else
 #include <thread>
-#endif
-
 #include <sstream>
 
 #include <FL/filename.H> // FL_PATH_MAX
@@ -77,11 +72,7 @@ void action_play_pause();
 void action_stop();
 void action_prev();
 void action_next();
-#ifdef WIN32
-void *action_stop_next(void *);
-#else
 void action_stop_next();
-#endif
 void action_mute();
 void action_repeat();
 void action_volume();

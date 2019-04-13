@@ -19,11 +19,7 @@
 #include "multimedia.hpp"
 #include "flvlc.hpp"
 
-#ifdef WIN32
-Multimedia::Multimedia(Fl_Preferences *pref_parent, const HWND window_id,
-#else
 Multimedia::Multimedia(Fl_Preferences *pref_parent, const int window_id,
-#endif
 		const int width, const int height)
 		: window_id(window_id), width(width),
 		  height(height), pref_parent(pref_parent)
@@ -281,12 +277,7 @@ int Multimedia::play(const char *media_file)
 		return false;
 	}
 
-#ifdef WIN32
-	libvlc_media_player_set_hwnd(media_player, window_id);
-#else
 	libvlc_media_player_set_xwindow(media_player, window_id);
-#endif
-
 	libvlc_video_set_key_input(media_player, 0);
 	libvlc_video_set_mouse_input(media_player, 0);
 

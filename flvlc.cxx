@@ -20,15 +20,8 @@
 
 void FLVLC::cb_end()
 {
-#ifdef WIN32
-	// TODO: mientras MinGW no actialice gcc
-	pthread_t th;
-	pthread_create(&th, nullptr, &action_stop_next, (void *)nullptr);
-	pthread_detach(th);
-#else
 	std::thread th{action_stop_next};
 	th.detach();
-#endif
 }
 
 /* No se recibe feedback si estado es pause*/
@@ -400,11 +393,7 @@ void FLVLC::action_next()
 }
 
 /* thread */
-#ifdef WIN32
-void *FLVLC::action_stop_next(void *)
-#else
 void FLVLC::action_stop_next()
-#endif
 {
 	/* stop() por defecto restaura
 	 * la pantalla a modo normal según b_fullscreen.
@@ -509,16 +498,7 @@ void FLVLC::action_snapshot()
 {
 	assert(multimedia);
 	if (state != MainWindow::STATE::STOP) {
-#ifdef WIN32
-		TCHAR dir[MAX_PATH];
-		if (GetTempPath(MAX_PATH, dir) == 0) {
-			print_error("Error GetTempPath %s\n", dir);
-			return;
-		}
-#else
 		const char *dir = "/tmp/";
-#endif
-
 		multimedia->snapshot(dir);
 	}
 }

@@ -22,23 +22,14 @@ include_directories(
 )
 
 
-
 #set(CMAKE_BUILD_TYPE Release)
 #set(CMAKE_BUILD_TYPE Debug)
 
 
-if( WIN32 ) #WINDOWS
-    if( ${CMAKE_BUILD_TYPE} STREQUAL "Release")
-	    set( CMAKE_CXX_FLAGS "-Wl,-s -Wno-write-strings -Ofast -std=gnu++11 -DWIN32 -mwindows")
-    else()
-	    set( CMAKE_CXX_FLAGS "-Wno-write-strings -Wall -g -DDEBUG -std=gnu++11 -DWIN32 -mwindows")
-    endif()
-else()     #LINUX
-    if( ${CMAKE_BUILD_TYPE} STREQUAL "Release")
-        set( CMAKE_CXX_FLAGS "-Wl,-s -Wno-write-strings -lrt -Ofast -march=native -mtune=native -std=c++11")
-    else()
-	    set( CMAKE_CXX_FLAGS "-Wno-write-strings -lrt -Wall -ggdb3 -DDEBUG -std=c++11")
-    endif()
+if( ${CMAKE_BUILD_TYPE} STREQUAL "Release")
+    set( CMAKE_CXX_FLAGS "-Wl,-s -Wno-write-strings -lrt -Ofast -march=native -mtune=native -std=c++11")
+else()
+    set( CMAKE_CXX_FLAGS "-Wno-write-strings -lrt -Wall -ggdb3 -DDEBUG -std=c++11")
 endif()
 
 

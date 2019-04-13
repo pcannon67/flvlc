@@ -88,11 +88,7 @@ void Playlist::save(const char *path)
 		file << " ";
 
 		// - Elimina el prefijo file://
-#ifdef WIN32
-		file << item.name.substr(8, item.name.size()) << '\n';
-#else
 		file << item.name.substr(7, item.name.size()) << '\n';
-#endif
 	}
 
 	file.close();

@@ -25,19 +25,6 @@
  * */
 bool FILES::is_file(const char *name)
 {
-#ifdef WIN32
-	const DWORD attr = GetFileAttributes(name);
-
-	if ((attr != INVALID_FILE_ATTRIBUTES and
-	     attr != FILE_ATTRIBUTE_DIRECTORY and
-	     attr != FILE_ATTRIBUTE_REPARSE_POINT) // <- FIXME: no detecta los
-						   // enlaces
-	) {
-		// TODO: get size
-		return true;
-	}
-
-#else // LINUX
 	struct stat st;
 
 	const int status = lstat(name, &st);
@@ -46,8 +33,6 @@ bool FILES::is_file(const char *name)
 	    (S_ISREG(st.st_mode) || S_ISLNK(st.st_mode)) && st.st_size != 0) {
 		return true;
 	}
-#endif
-
 	return false;
 }
 
@@ -62,14 +47,8 @@ bool FILES::make_name_file(std::string &name, const char *file)
 	if (is_file(file)) {
 		char abs_path[FL_PATH_MAX];
 		fl_filename_absolute(abs_path, sizeof(abs_path), file);
-
-#ifdef WIN32
-		name = "file:///";
-		name += abs_path;
-#else
 		name = "file://";
 		name += abs_path;
-#endif
 	} else if (is_uri(file)) {
 		name = file;
 	} else {

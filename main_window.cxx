@@ -224,13 +224,8 @@ void MainWindow::center_on_screen()
 	this->position((w - this->w()) / 2, (h / 2) - this->h());
 }
 
-#ifdef WIN32
-HWND MainWindow::get_id() const
-{
-#else
 int MainWindow::get_id() const
 {
-#endif
 	return fl_xid((const Fl_Window *)display);
 }
 
@@ -319,11 +314,7 @@ void MainWindow::toggle_fullscreen()
 	if (0 == fullscreen_active()) {
 		hide_play_controls();
 		fullscreen();
-
-#ifndef WIN32 // solo en Linux
-		resize(0, 0, Fl::w(), Fl::h());
-#endif
-
+		 resize(0, 0, Fl::w(), Fl::h());
 	} else {
 		fullscreen_off();
 		show_play_controls();
