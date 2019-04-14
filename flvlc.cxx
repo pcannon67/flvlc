@@ -188,8 +188,7 @@ void window_close_x(Fl_Widget *, void *)
 
 void FLVLC::toggle_fullscreen()
 {
-	assert(multimedia);
-	if (playlist.is_empty() or
+	if (!multimedia or playlist.is_empty() or
 	    not multimedia->is_valid_media()) {
 		return;
 	}
@@ -218,9 +217,10 @@ const std::string FLVLC::parse_time(float value)
 
 void FLVLC::action_mute()
 {
-	assert(multimedia);
-	window.mute_toggle();
-	multimedia->toggle_mute();
+	if (multimedia) {
+		window.mute_toggle();
+		multimedia->toggle_mute();
+	}
 }
 
 void FLVLC::action_repeat()
@@ -267,7 +267,9 @@ void FLVLC::action_playlist()
 
 void FLVLC::action_subtitles()
 {
-	assert(multimedia);
+	if (!multimedia) {
+		return;
+	}
 
 	if (FLVLC::state != MainWindow::STATE::STOP and
 	    playlist.count() != 0 and sbt_window == nullptr) {
@@ -300,13 +302,17 @@ void FLVLC::action_preferences()
 
 void FLVLC::action_volume()
 {
-	assert(multimedia);
-	multimedia->set_volume(FLVLC::window.sl_volume->value());
+	if(multimedia) {
+		multimedia->set_volume(FLVLC::window.sl_volume->value());
+	}
 }
 
 void FLVLC::action_video()
 {
-	assert(multimedia);
+	if (!multimedia) {
+		return;
+	}
+
 	const float value = window.sl_video->value();
 
 	if (FLVLC::state == MainWindow::STATE::PAUSE) {
@@ -322,9 +328,7 @@ void FLVLC::action_quit()
 
 void FLVLC::action_play_pause()
 {
-	assert(multimedia);
-
-	if (playlist.is_empty()) {
+	if (!multimedia or playlist.is_empty()) {
 		return;
 	}
 
@@ -346,9 +350,7 @@ void FLVLC::action_play_pause()
 
 void FLVLC::action_stop()
 {
-	assert(multimedia);
-
-	if (MainWindow::STATE::STOP == state) {
+	if (!multimedia or MainWindow::STATE::STOP == state) {
 		return;
 	}
 
@@ -382,9 +384,7 @@ void FLVLC::action_stop()
 
 void FLVLC::action_prev()
 {
-	assert(multimedia);
-
-	if (playlist.is_empty() or
+	if (!multimedia or playlist.is_empty() or
 	    not playlist.is_prev()) {
 		return;
 	}
@@ -394,9 +394,7 @@ void FLVLC::action_prev()
 
 void FLVLC::action_next()
 {
-	assert(multimedia);
-
-	if (playlist.is_empty() or
+	if (!multimedia or playlist.is_empty() or
 	    not playlist.is_next()) {
 		return;
 	}
@@ -508,8 +506,7 @@ void FLVLC::action_open_url()
 
 void FLVLC::action_snapshot()
 {
-	assert(multimedia);
-	if (state != MainWindow::STATE::STOP) {
+	if (multimedia and state != MainWindow::STATE::STOP) {
 		const char *dir = "/tmp/";
 		multimedia->snapshot(dir);
 	}

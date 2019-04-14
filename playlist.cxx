@@ -209,12 +209,18 @@ float Playlist::watch() const
 
 bool Playlist::is_watch() const
 {
-	return (items.at(ipos).b_watch);
+	if (!is_empty())
+	{
+		return (items.at(ipos).b_watch);
+	}
+	return false;
 }
 
 void Playlist::set_watch(bool val)
 {
-	items.at(ipos).b_watch = val;
+	if (!is_empty()) {
+		items.at(ipos).b_watch = val;
+	}
 }
 
 const ITEMS &Playlist::get_items() const
