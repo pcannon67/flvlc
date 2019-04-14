@@ -9,9 +9,9 @@ flvlc
 Platform:
 ----------
 
-GNU/Linux.
+- GNU/Linux.
 
-Windows (flvlc <=2.12, end support).
+- Windows (flvlc <=2.12, end support).
 
 
 Compile
