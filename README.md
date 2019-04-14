@@ -20,23 +20,24 @@ Compile
 
 	- Requirements:
 
-		  - FLTK >=1.3
+		  - FLTK >=1.3 (dev)
 
-		  - libvlc >=2.1 ( or vlc 2.1 )
+		  - libvlc >=2.1 ( or vlc 2.1 ) (dev)
 
 			  Note: some "distros" need extra plugins.
 
-		  - cmake >=2.8
+		  - make
+
+		  - pkg-config
 
 		  - GCC support c++11
 
 - Build
 
 	```bash
-	mkdir build && cd build
-	cmake -DCMAKE_BUILD_TYPE=Release .. && make
+	make release
 			-- or --
-	cmake -DCMAKE_BUILD_TYPE=Debug .. && make
+	make debug
 	```
 
 
