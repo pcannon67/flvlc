@@ -82,27 +82,28 @@ Notes
 
 - Repeat modes:
 
-	  - none
-	  
-	  - repeat current media file.
-	  
-	  - repeat playlist
+	- none
+
+	- repeat current media file.
+
+	- repeat playlist
 
 - Popup Menu:
 
-	  - Press right button.
+	- Press right button.
 
 - Watch button: 
 
-	  - Save the current position video while running.
+	- Save the current position video while running.
 
 - Snapshot:
 
-	  - Save to temp directory.
+	- Save to temp directory.
 
-- Open URL:( alpha, testing )
+- Automatically save and load playlist.
 
+	- Not by default.
 
-- Automatically save and load playlist. (Default: not)
+- Open URL:
 
-
+	- Alpha, testing.
