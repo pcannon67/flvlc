@@ -73,6 +73,16 @@ int Multimedia::get_volume() const
 void Multimedia::mute()
 {
 	if (is_valid_media()) {
+		b_mute = true;
+		libvlc_audio_set_mute(media_player, true);
+	} else {
+		b_mute = false;
+	}
+}
+
+void Multimedia::toggle_mute()
+{
+	if (is_valid_media()) {
 		b_mute = !b_mute;
 		libvlc_audio_toggle_mute(media_player);
 	} else {

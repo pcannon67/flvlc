@@ -220,7 +220,7 @@ void FLVLC::action_mute()
 {
 	assert(multimedia);
 	window.mute_toggle();
-	multimedia->mute();
+	multimedia->toggle_mute();
 }
 
 void FLVLC::action_repeat()
@@ -359,11 +359,6 @@ void FLVLC::action_stop()
 	if (MainWindow::STATE::PLAY == state or
 	    state != MainWindow::STATE::PAUSE) {
 		window.play_pause_toggle();
-	}
-
-	if (multimedia->is_mute()) {
-		multimedia->mute(); // internal reset
-		window.mute_toggle();
 	}
 
 	state = MainWindow::STATE::STOP;
@@ -549,14 +544,14 @@ void FLVLC::play_seek(const char *media)
 		window.play_pause_toggle();
 	}
 
-	if (multimedia->is_mute()) {
-		multimedia->mute(); // internal reset
-		window.mute_toggle();
-	}
 
 	state = MainWindow::STATE::PLAY;
 	multimedia->play(media);
 	update_title_info();
+
+	if (multimedia->is_mute()) {
+		multimedia->mute();
+	}
 
 	if (playlist.is_watch()) {
 		window.watch_on();

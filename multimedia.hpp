@@ -66,6 +66,7 @@ class Multimedia {
 	bool is_seekable() const;
 	void stop();
 	void pause() const;
+	void toggle_mute();
 	void mute();
 	bool is_mute() const;
 	void set_position(const float position) const;
