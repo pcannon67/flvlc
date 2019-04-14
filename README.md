@@ -55,7 +55,6 @@ Help commands
 
 | Key	| Description
 | --------|------------
-| 
 | h | toggle maximize
 | l | show playlist window
 | p | show preferences window
