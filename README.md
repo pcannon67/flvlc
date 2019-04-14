@@ -63,11 +63,11 @@ Help commands
 | o | open file
 | t | show subtitles window
 | w | watch toggle
-| r | toggle repeat
+| r | toggle repeat modes
 | f | toggle fullscreen
 | m | toggle mute audio
 | s | stop media
-| Esc/q |  quit
+| Esc - q |  quit
 | n | next media
 | b | previous media
 | Space | toggle play/pause
