@@ -53,32 +53,32 @@ See logs from a terminal.
 Help commands
 -------------------
 
-Key	| Description
---------|------------
-
-h | toggle maximize
-l | show playlist window
-p | show preferences window
-u | open URL
-y | take one snapshot
-o | open file
-t | show subtitles window
-w | watch toggle
-r | toggle repeat
-f | toggle fullscreen
-m | toggle mute audio
-s | stop media
-Esc/q |  quit
-n | next media
-b | previous media
-Space | toggle play/pause
-. | volume up
-, | volume down
-arrow right | video foward low
-arrow left | video backward low
-arrow up | video foward high
-arrow down | video backward high 
-Mouse wheel | volume up/down
+| Key	| Description
+| --------|------------
+| 
+| h | toggle maximize
+| l | show playlist window
+| p | show preferences window
+| u | open URL
+| y | take one snapshot
+| o | open file
+| t | show subtitles window
+| w | watch toggle
+| r | toggle repeat
+| f | toggle fullscreen
+| m | toggle mute audio
+| s | stop media
+| Esc/q |  quit
+| n | next media
+| b | previous media
+| Space | toggle play/pause
+| . | volume up
+| , | volume down
+| arrow right | video foward low
+| arrow left | video backward low
+| arrow up | video foward high
+| arrow down | video backward high 
+| Mouse wheel | volume up/down
 
 
 Notes
