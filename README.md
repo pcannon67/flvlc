@@ -52,29 +52,33 @@ See logs from a terminal.
 
 Help commands
 -------------------
- - Key __'h'__ : toggle maximize
- - Key __'l'__ : show playlist window
- - Key __'p'__ : show preferences window
- - Key __'u'__ : open URL
- - Key __'y'__ : take one snapshot
- - Key __'o'__ : open file
- - key __'t'__ : show subtitles window
- - Key __'w'__ : watch toggle
- - Key __'r'__ : toggle repeat
- - Key __'f'__ : toggle fullscreen
- - Key __'m'__ : toggle mute audio
- - Key __'s'__ : stop media
- - Key __'Esc'__ or __'q'__ : quit
- - Key __'n'__ : next media
- - Key __'b'__ : previous media
- - Key __'Space'__ : toggle play/pause
- - Key __'.'__ : volume up
- - Key __','__ : volume down
- - Key __'arrow right'__ : video foward low
- - Key __'arrow left'__ :  video backward low
- - Key __'arrow up'__ : video foward high
- - Key __'arrow down'__ : video backward high 
- - __Mouse wheel__: volume up/down
+
+Key	| Description
+--------|------------
+
+h | toggle maximize
+l | show playlist window
+p | show preferences window
+u | open URL
+y | take one snapshot
+o | open file
+t | show subtitles window
+w | watch toggle
+r | toggle repeat
+f | toggle fullscreen
+m | toggle mute audio
+s | stop media
+Esc/q |  quit
+n | next media
+b | previous media
+Space | toggle play/pause
+. | volume up
+, | volume down
+arrow right | video foward low
+arrow left | video backward low
+arrow up | video foward high
+arrow down | video backward high 
+Mouse wheel | volume up/down
 
 
 Notes
