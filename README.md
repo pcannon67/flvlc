@@ -82,7 +82,7 @@ Notes
 
 - Repeat modes:
 
-	  - none ![none](https://raw.githubusercontent.com/spycapitan/flvlc/master/icons/repeat_active.xpm)
+	  - none
 	  
 	  - repeat current media file.
 	  
