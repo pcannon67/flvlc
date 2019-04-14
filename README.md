@@ -81,22 +81,28 @@ Notes
 -----
 
 - Repeat modes:
-	  - none
+
+	  - none ![none](https://raw.githubusercontent.com/spycapitan/flvlc/master/icons/repeat_active.xpm)
+	  
 	  - repeat current media file.
+	  
 	  - repeat playlist
 
 - Popup Menu:
+
 	  - Press right button.
 
 - Watch button: 
+
 	  - Save the current position video while running.
 
 - Snapshot:
+
 	  - Save to temp directory.
 
 - Open URL:( alpha, testing )
 
 
-- Automatically save and load playlist.
+- Automatically save and load playlist. (Default: not)
 
 
