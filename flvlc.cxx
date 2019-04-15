@@ -699,10 +699,18 @@ VIDEO_SEEK_DOWN: // usado por FL_MOUSEWHEEL
 	} // FL_KEYDOWN
 
 	case FL_MOUSEWHEEL:
-		if(1 == Fl::event_dy()) {
-			goto VIDEO_SEEK_DOWN;
+		if (not Fl::event_inside(box_controls)) {
+			if (1 == Fl::event_dy()) {
+				goto VIDEO_SEEK_DOWN;
+			} else {
+				goto VIDEO_SEEK_UP;
+			}
 		} else {
-			goto VIDEO_SEEK_UP;
+			if (1 ==  Fl::event_dy()) {
+				FLVLC::down_volume();
+			} else {
+				FLVLC::up_volume();
+			}
 		}
 		break;
 
@@ -720,7 +728,7 @@ VIDEO_SEEK_DOWN: // usado por FL_MOUSEWHEEL
 		break;
 	} // end switch
 
-	return ret; // all ok != -1
+	return ret;
 }
 
 void FLVLC::up_volume()
