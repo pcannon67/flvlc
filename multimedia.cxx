@@ -192,12 +192,12 @@ bool Multimedia::initialize()
 
 	static const int def_argc = sizeof(def_argv) / sizeof(def_argv[0]);
 
-	const char *argv[20];
 	char *pref_value;
 
 	if (0 != pref_parent->get("vlc", pref_value, " ")) {
 		print_notice("Init VLC options from %s\n", "Register");
 
+		char *argv[20];
 		int argc = 0;
 		char *line = strtok(pref_value, " ");
 
