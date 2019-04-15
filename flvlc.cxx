@@ -812,7 +812,7 @@ void FLVLC::save_playlist()
 		return;
 	}
 
-	char path[FL_PATH_MAX] = {'\0'};
+	char path[FL_PATH_MAX];
 
 	if (0 == preferences->getUserdataPath(path, FL_PATH_MAX - 1)) {
 		return;
