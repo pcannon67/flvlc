@@ -17,7 +17,7 @@ CXXFLAGS := $(shell pkg-config --cflags libvlc) -Wno-write-strings
 
 OBJ := $(subst .cxx,.o,$(wildcard *.cxx))
 
-release: CXXFLAGS+= -O3
+release: CXXFLAGS+= -O3 -DNDEBUG
 release: CXXLIBS+= -Wl,-s
 release: $(APP)
 
