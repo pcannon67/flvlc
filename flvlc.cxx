@@ -56,8 +56,8 @@ void FLVLC::cb_time_changed(float value)
 void FLVLC::cb_length_changed(float value)
 {
 	// TODO: al archivo de configuración.
-	const unsigned int minutes_seek_low = 2;
-	const unsigned int minutes_seek_high = 5;
+	const unsigned int minutes_seek_low = 1;
+	const unsigned int minutes_seek_high = 4;
 
 	video_percent_low = (value * minutes_seek_low) / 100;
 	video_percent_high = (value * minutes_seek_high) / 100;
@@ -635,6 +635,8 @@ int MainWindow::handle(int event)
 			FLVLC::toggle_fullscreen();
 			break;
 
+VIDEO_SEEK_UP: // usado por FL_MOUSEWHEEL
+
 		case FL_Right:
 			if (FLVLC::state != MainWindow::STATE::STOP) {
 				double value =	FLVLC::window.sl_video->value() +
@@ -658,6 +660,8 @@ int MainWindow::handle(int event)
 				FLVLC::action_video();
 			}
 			break;
+
+VIDEO_SEEK_DOWN: // usado por FL_MOUSEWHEEL
 
 		case FL_Left:
 			if (FLVLC::state != MainWindow::STATE::STOP) {
@@ -695,8 +699,11 @@ int MainWindow::handle(int event)
 	} // FL_KEYDOWN
 
 	case FL_MOUSEWHEEL:
-		(1 == Fl::event_dy()) ? FLVLC::down_volume()
-				      : FLVLC::up_volume();
+		if(1 == Fl::event_dy()) {
+			goto VIDEO_SEEK_DOWN;
+		} else {
+			goto VIDEO_SEEK_UP;
+		}
 		break;
 
 	case FL_FULLSCREEN:

@@ -77,7 +77,7 @@ Help commands
 | arrow left | video backward low
 | arrow up | video foward high
 | arrow down | video backward high 
-| Mouse wheel | volume up/down
+| Mouse wheel | video foward low / video backward low
 
 
 Notes
