@@ -749,10 +749,7 @@ VIDEO_SEEK_DOWN: // usado por FL_MOUSEWHEEL
 		break;
 
 	case FL_PUSH:
-		if (Fl::event_button() == FL_LEFT_MOUSE and
-		    0 != Fl::event_inside(FLVLC::window.display)) {
-			FLVLC::action_play_pause();
-		} else if (Fl::event_button() == FL_RIGHT_MOUSE) {
+		if (Fl::event_button() == FL_RIGHT_MOUSE) {
 			FLVLC::window.popup_menu();
 		}
 		break;
