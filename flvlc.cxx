@@ -635,6 +635,39 @@ int MainWindow::handle(int event)
 			FLVLC::toggle_fullscreen();
 			break;
 
+		case '0':
+			FLVLC::up_volume();
+			break;
+
+		case '9':
+			FLVLC::down_volume();
+			break;
+
+		case '.':
+			if (FLVLC::state != MainWindow::STATE::STOP and
+			    FLVLC::state == MainWindow::STATE::PAUSE) {
+				double value =	FLVLC::window.sl_video->value() + 60.0;
+				FLVLC::window.sl_video->value(value);
+				if (value > FLVLC::window.sl_video->maximum()) {
+					FLVLC::action_stop_next();
+				}
+				FLVLC::action_video();
+			}
+			break;
+
+		case ',':
+			if (FLVLC::state != MainWindow::STATE::STOP and
+			    FLVLC::state == MainWindow::STATE::PAUSE) {
+				double value =	FLVLC::window.sl_video->value() - 60.0;
+				if (value < FLVLC::window.sl_video->minimum()) {
+					value = FLVLC::window.sl_video->minimum();
+				}
+				FLVLC::window.sl_video->value(value);
+				FLVLC::action_video();
+			}
+			break;
+
+
 VIDEO_SEEK_UP: // usado por FL_MOUSEWHEEL
 
 		case FL_Right:
@@ -687,13 +720,6 @@ VIDEO_SEEK_DOWN: // usado por FL_MOUSEWHEEL
 			}
 			break;
 
-		case '.':
-			FLVLC::up_volume();
-			break;
-
-		case ',':
-			FLVLC::down_volume();
-			break;
 		}
 		break;
 	} // FL_KEYDOWN

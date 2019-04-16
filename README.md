@@ -71,8 +71,10 @@ Help commands
 | n | next media
 | b | previous media
 | Space | toggle play/pause
-| . | volume up
-| , | volume down
+| . | next video frame (pause)
+| , | previous video frame (pause)
+| 0 | volume up
+| 9 | volume down
 | arrow right | video foward low
 | arrow left | video backward low
 | arrow up | video foward high
