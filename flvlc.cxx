@@ -507,7 +507,11 @@ void FLVLC::action_open_url()
 void FLVLC::action_snapshot()
 {
 	if (multimedia and state != MainWindow::STATE::STOP) {
-		const char *dir = "/tmp/";
+		const char *dir = fl_getenv("HOM");
+		if (dir == nullptr) {
+			print_warning("Failed to save the snapshot in ""%s"". Using /tmp insted.\n", "HOME");
+			dir = "/tmp/";
+		}
 		multimedia->snapshot(dir);
 	}
 }
