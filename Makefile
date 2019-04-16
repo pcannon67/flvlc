@@ -12,8 +12,8 @@ endif
 
 APP := flvlc
 CPP = g++
-CXXLIBS := $(shell pkg-config --libs libvlc) $(shell fltk-config --ldflags)
-CXXFLAGS := $(shell pkg-config --cflags libvlc) -Wno-write-strings
+CXXLIBS := $(shell pkg-config --libs libvlc) $(shell fltk-config --ldflags) -lpthread
+CXXFLAGS := $(shell pkg-config --cflags libvlc) -Wno-write-strings -std=c++11
 
 OBJ := $(subst .cxx,.o,$(wildcard *.cxx))
 
