@@ -21,12 +21,8 @@
 #include <algorithm>
 #include <string>
 #include <vector>
-
-#ifdef DEBUG
-#include <iostream>
-#endif
-
 #include "files.hpp"
+#include "log.hpp"
 
 struct Item {
 	std::string name;
@@ -68,7 +64,7 @@ class Playlist {
 	void print() const
 	{
 		for (auto &n : items) {
-			std::cout << n.name << std::endl;
+			print_notice("Debug: playlist item: %s\n", n.name.c_str());
 		}
 	}
 #endif
