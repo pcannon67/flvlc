@@ -188,11 +188,6 @@ void window_close_x(Fl_Widget *, void *)
 
 void FLVLC::toggle_fullscreen()
 {
-	if (!multimedia or playlist.is_empty() or
-	    not multimedia->is_valid_media()) {
-		return;
-	}
-
 	window.toggle_fullscreen();
 }
 
@@ -354,10 +349,6 @@ void FLVLC::action_stop()
 		return;
 	}
 
-	if (b_fullscreen) {
-		toggle_fullscreen();
-	}
-
 	if (MainWindow::STATE::PLAY == state or
 	    state != MainWindow::STATE::PAUSE) {
 		window.play_pause_toggle();
@@ -405,32 +396,15 @@ void FLVLC::action_next()
 /* thread */
 void FLVLC::action_stop_next()
 {
-	/* stop() por defecto restaura
-	 * la pantalla a modo normal según b_fullscreen.
-	 * Se verifica si existe un item siguiente
-	 * en la playlist para desactivar tal efecto
-	 * en stop().
-	 * */
-
-	bool save = b_fullscreen;
-
-	if (playlist.is_next() or
-	    (window.repeat_current == MainWindow::REPEAT::MEDIA or
-	     window.repeat_current == MainWindow::REPEAT::PLAYLIST)) {
-		b_fullscreen = false;
-	}
-
-	action_stop();
-
-	b_fullscreen = save;
-
 	if (window.repeat_current == MainWindow::REPEAT::MEDIA) {
-		action_play_pause();
-	} else if (false == playlist.is_next() and
-		   window.repeat_current == MainWindow::REPEAT::PLAYLIST) {
+		play_seek(playlist.current());
+	} else if (window.repeat_current == MainWindow::REPEAT::PLAYLIST and
+		   not playlist.is_next()) {
+		action_stop();
 		playlist.reset();
 		action_play_pause();
 	} else {
+		action_stop();
 		action_next();
 	}
 }
