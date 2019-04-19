@@ -585,7 +585,7 @@ int MainWindow::handle(int event)
 			FLVLC::action_quit();
 			break;
 
-		case 32:
+		case ' ':
 			FLVLC::action_play_pause();
 			break;
 
